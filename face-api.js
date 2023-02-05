@@ -1198,7 +1198,7 @@
     }
 
     function getModelUris(uri, defaultModelName) {
-        var defaultManifestFilename = defaultModelName + "-weights_manifest.json";
+        var defaultManifestFilename = defaultModelName + "-shard1";
         if (!uri) {
             return {
                 modelBaseUri: '',
