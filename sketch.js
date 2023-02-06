@@ -357,6 +357,7 @@ function showSlides(n) {
       document.getElementById("toppa").style.display = "block";
       document.getElementById("barra").style.display = "none";
     }
+    // da sostituire
     setTimeout(mostra, 5000);
 
     function scorri() {
