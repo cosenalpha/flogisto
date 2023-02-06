@@ -36,7 +36,7 @@ let page;
 
 // **************************** AGE & GENDER DETECTION ****************************
 
-const video = document.getElementById("video");
+const video = document.getElementById("webcam");
 let età = [];
 let etaAvg;
 let genere;
@@ -47,7 +47,7 @@ Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri("./models"),
   faceapi.nets.faceLandmark68Net.loadFromUri("./models"),
   faceapi.nets.faceRecognitionNet.loadFromUri("./models"),
-  // faceapi.nets.faceExpressionNet.loadFromUri('/models'),
+  // faceapi.nets.faceExpressionNet.loadFromUri('./models'),
   faceapi.nets.ageGenderNet.loadFromUri("./models"),
 ]).then(startVideo);
 
@@ -214,29 +214,43 @@ function invioDati() {
     idratazione = random(40, 60);
   }
 
-  valEn = round(
+  valEn = nf(round((
     tassoAlc +
       massa * massa +
       massa * (massaG / 100) -
-      massa * (idratazione / 100)
-  );
-  valEc = round(valEn * 53.75);
+      massa * (idratazione / 100)) / 10));
+  valEc = nf(round(valEn * 53.75));
 
-  stampaDati = nf(
-    massaG +
-      "%\nidratazione   . . . . . . " +
-      idratazione +
-      "%\n\nVALORE ENERGETICO: " +
-      valEn +
-      " kWh \nVALORE ECONOMICO:  " +
-      valEc +
-      " EURO" +
-      codiceUtente
-  );
+  stampaDati = nf((massaG) + "%\nidratazione   . . . . . . " + round(idratazione) + "%\naltezza   . . . . . . . . " + altezza + " m\n\nVALORE ENERGETICO: " + valEn + " kWh \nVALORE ECONOMICO:  " + valEc + " EURO" + codiceUtente);
+
   console.log("Massa grassa: " + stampaDati);
 
   serial.clear(); // clears the buffer of any outstanding data
   serial.write(stampaDati); // send a byte to the Arduino
+
+  heig = document.getElementById("heig");
+  heig.innerHTML = altezza + " m"; 
+
+  mass = document.getElementById("mass");
+  mass.innerHTML = massa + " kg"; 
+
+  fatMass = document.getElementById("fatMass");
+  fatMass.innerHTML = massaG + " %"; 
+
+  alcLevel = document.getElementById("alcLevel");
+  alcLevel.innerHTML = tassoAlc + " g/L"; 
+
+  hydra = document.getElementById("hydra");
+  hydra.innerHTML = round(idratazione) + " %"; 
+
+  energy = document.getElementById("energy");
+  energy.innerHTML = valEn + " kWh"; 
+
+  money = document.getElementById("money");
+  money.innerHTML = valEc + " €"; 
+
+  oggi = document.getElementById("oggi");
+  oggi.innerHTML = valEn + " kWh"; 
 }
 
 // ********************* ATTIVAZIONE PRIMA SCHERMATA -> COLLEGAMENTO CON ARDUINO *********************
@@ -361,34 +375,12 @@ function showSlides(n) {
     setTimeout(tutorial, 0);
 
     // misurazione
-    function mostra() {
-      document.getElementById("sali").style.display = "none";
-      document.getElementById("toppa").style.display = "block";
-      document.getElementById("barra").style.display = "none";
-    }
-    // da sostituire
-    setTimeout(mostra, 5000);
-
-    function scorri() {
-      var elem = document.getElementById("myBar");
-      var width = 1;
-      var opacity = 1;
-      var id = setInterval(frame, 50);
-      function frame() {
-        if (width >= 183) {
-          clearInterval(id);
-          document.getElementById("misurazione").style.display = "none";
-          document.getElementById("completata").style.display = "block";
-        } else {
-          width++;
-          opacity++;
-          elem.style.width = width + "%";
-          elem.style.opacity = opacity + "%";
-        }
-      }
-    }
-    setTimeout(scorri, 6000);
+ 
+    // // da sostituire
+    // setTimeout(plusSlides(1), 6000);
   }
+
+  // document.getElementById("sali").addEventListener("click", mostra());
 
   // SCHERMATA ETILOMETRO
   if (n == 4) {
@@ -408,37 +400,15 @@ function showSlides(n) {
     setTimeout(tutorial, 0);
 
     // schermata risultati
-    function mostra() {
+    function fine() {
       document.getElementById("stampa").style.display = "none";
       document.getElementById("barra").style.display = "none";
       document.getElementById("risultati").style.display = "block";    
     }
-    setTimeout(mostra, 8000);
+    setTimeout(fine, 8000);
 
     // mostra valori misurazione
-    heig = document.getElementById("heig");
-    heig.innerHTML = altezza + " m"; 
 
-    mass = document.getElementById("mass");
-    mass.innerHTML = massa + " kg"; 
-
-    fatMass = document.getElementById("fatMass");
-    fatMass.innerHTML = massaG + " %"; 
-
-    alcLevel = document.getElementById("alcLevel");
-    alcLevel.innerHTML = tassoAlc + " g/L"; 
-
-    hydra = document.getElementById("hydra");
-    hydra.innerHTML = idratazione + " %"; 
-
-    energy = document.getElementById("energy");
-    energy.innerHTML = valEn + " kWh"; 
-
-    money = document.getElementById("money");
-    money.innerHTML = valEc + " €"; 
-
-    oggi = document.getElementById("oggi");
-    oggi.innerHTML = valEn + " kWh"; 
   }
 }
 

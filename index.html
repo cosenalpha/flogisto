@@ -42,6 +42,7 @@
         <div class="ellipse"></div>
       </div>
 
+      <!-------------------- WEBCAM --------------------->
       <video
         autoplay
         muted
@@ -94,7 +95,7 @@
       </div>
 
       <!------------------ n°3: BILANCIA ------------------->
-      <div class="mySlides" onclick="plusSlides(1)">
+      <div class="mySlides" onclick="mostra()">
         <div id="sali" style="display: block">
           <!-- video -->
           <video id="bilancia" muted loop>
@@ -233,7 +234,7 @@
           <!-- testo -->
           <div class="content">
             <h1>oggi vali <span id="oggi"></span></h1>
-            <p>
+            <p onclick="window.location.reload()">
               <br />
               Clicca per effettuare una nuova analisi
             </p>
@@ -247,6 +248,31 @@
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
       <script src="sketch.js"></script>
+      <script>
+      function mostra() {
+          document.getElementById("sali").style.display = "none";
+          document.getElementById("toppa").style.display = "block";
+          document.getElementById("barra").style.display = "none";
+          
+          var elem = document.getElementById("myBar");
+          var width = 1;
+          var opacity = 1;
+          var id = setInterval(frame, 50);
+          function frame() {
+            if (width >= 95) {
+              clearInterval(id);
+              document.getElementById("misurazione").style.display = "none";
+              document.getElementById("completata").style.display = "block";
+            } else {
+              width++;
+              opacity++;
+              elem.style.width = width + "vw";
+              elem.style.opacity = opacity + "%";
+            }
+          }
+        }
+
+      </script>
     </div>
   </body>
 </html>
