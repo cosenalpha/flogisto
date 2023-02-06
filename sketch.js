@@ -27,48 +27,51 @@ let page;
 
 // **************************** AGE & GENDER DETECTION ****************************
 
-const video = document.getElementById('video');
+const video = document.getElementById("video");
 let età = [];
 let etaAvg;
-let genere; 
+let genere;
 let varGen = 0; // 12.1 se l'utente è maschio, 0 se l'utente è femmina
 let outData;
 
-
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
+  faceapi.nets.tinyFaceDetector.loadFromUri("./models"),
+  faceapi.nets.faceLandmark68Net.loadFromUri("./models"),
+  faceapi.nets.faceRecognitionNet.loadFromUri("./models"),
   // faceapi.nets.faceExpressionNet.loadFromUri('/models'),
-  faceapi.nets.ageGenderNet.loadFromUri('./models')
+  faceapi.nets.ageGenderNet.loadFromUri("./models"),
 ]).then(startVideo);
- 
-function startVideo() {
 
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-  
+function startVideo() {
+  navigator.getUserMedia =
+    navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia;
+
   if (navigator.getUserMedia) {
-   navigator.getUserMedia({  video: true },
-      function(stream) {
-         var video = document.querySelector('video');
+    navigator.getUserMedia(
+      { video: true },
+      function (stream) {
+        var video = document.querySelector("video");
         //  video.style.display = "none";
-         video.srcObject = stream;
-         video.onloadedmetadata = function(e) {
-           video.play();
-         };
+        video.srcObject = stream;
+        video.onloadedmetadata = function (e) {
+          video.play();
+        };
       },
-      function(err) {
-         console.log(err.name);
+      function (err) {
+        console.log(err.name);
       }
-   );
-} else {
-   document.body.innerText ="getUserMedia not supported";
-   console.log("getUserMedia not supported");
+    );
+  } else {
+    document.body.innerText = "getUserMedia not supported";
+    console.log("getUserMedia not supported");
   }
 }
- 
-video.addEventListener('play', () => {
 
+if (video) {
+video.addEventListener("play", () => {
   const canvas = faceapi.createCanvasFromMedia(video);
   document.body.append(canvas);
   const displaySize = { width: video.width, height: video.height };
@@ -79,14 +82,14 @@ video.addEventListener('play', () => {
       .withFaceLandmarks()
       // .withFaceExpressions()
       .withAgeAndGender();
- 
+
     const resizedDetections = faceapi.resizeResults(predictions, displaySize);
     // resizedDetections.style.display = "none";
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+    canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
     // faceapi.draw.drawDetections(canvas, resizedDetections);
     // faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
     // faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-    resizedDetections.forEach(result => {
+    resizedDetections.forEach((result) => {
       const { age, gender, genderProbability } = result;
       // new faceapi.draw.DrawTextField(
       //   [
@@ -97,36 +100,35 @@ video.addEventListener('play', () => {
       // ).draw(canvas);
       età.push(faceapi.round(age, 0));
       genere = gender;
-      if (genere == 'male') {
+      if (genere == "male") {
         varGen = 12.1;
-      } else if (genere == 'female') {
+      } else if (genere == "female") {
         varGen = 0;
       }
 
       if (faceapi.round(genderProbability) >= 0.9) {
-        console.log("Genere: "+ genere);
+        console.log("Genere: " + genere);
         // document.getElementById("massaVar").innerText = genere;
 
-      //  document.getElementById("prediction").innerText = "Gender: " + genere;
+        // document.getElementById("prediction").innerText = "Gender: " + genere;
       }
 
       if (età.length == 20) {
         let count = 0;
         for (let i = 0; i < età.length; i++) {
-        count = count + età[i];
+          count = count + età[i];
         }
         etaAvg = faceapi.round(count / età.length, 0);
-        console.log("Età: "+ etaAvg);
-      // document.getElementById("prediction1").innerText = "Età: "+ faceapi.round(count / età.length);
+        console.log("Età: " + etaAvg);
+        // document.getElementById("prediction1").innerText = "Età: "+ faceapi.round(count / età.length);
       }
-      if ( (genere == "male" || genere == "female") && etaAvg ) {
+      if ((genere == "male" || genere == "female") && etaAvg) {
         video.pause();
-        }
+      }
     });
   }, 100);
 });
-
-
+}
 
 // ************************************* SETUP *************************************
 
@@ -136,27 +138,26 @@ function setup() {
   stampaDati = round(massaG);
 
   tagSlider = document.getElementById("tagSlider");
-  altezza = nf(slider.value/100, 1, 2);
-  tagSlider.innerHTML =  altezza + "m"; // Display the default slider value
+  altezza = nf(slider.value / 100, 1, 2);
+  tagSlider.innerHTML = altezza + "m"; // Display the default slider value
 }
 
 // *************************** CODICE SLIDER ***************************
 
-  slider.oninput = function() {
-    timer = millis();
-    expAlt = this.value;
-    altezza = nf(this.value/100, 1, 2);
-    tagSlider.innerHTML = altezza + "m";
-    console.log(altezza);
-    outData = altezza;
+slider.oninput = function () {
+  timer = millis();
+  expAlt = this.value;
+  altezza = nf(this.value / 100, 1, 2);
+  tagSlider.innerHTML = altezza + "m";
+  console.log(altezza);
+  outData = altezza;
+};
 
+function keyPressed() {
+  if (keyCode === ENTER && [slideIndex[l] - 1] == 1) {
+    plusSlides(1);
   }
-
-  function keyPressed() {
-    if (keyCode === ENTER && [slideIndex[l]-1] == 1) {
-     plusSlides(1);
-    }
-  }
+}
 
 // **************************** CALCOLO MASSA GRASSA ****************************
 // FORMULA DI JACKSON-POLLOCK
@@ -164,79 +165,92 @@ function setup() {
 // BMI = peso / altezza ^ 2;
 // sesso = 1 se maschio ; sesso = 0 se femmina;
 
-
 // **************************** CALCOLO IDRATAZIONE ****************************
 // FORMULA DI WATSON
 // Male TBW = 2.447 - (0.09156 x age) + (0.1074 x height) + (0.3362 x weight)
 // Female TBW = -2.097 + (0.1069 x height) + (0.2466 x weight)
 
+function invioDati() {
+  massa = round(sensors[1]);
+  tassoAlc = sensors[0];
+  console.log("VarGen: " + varGen);
+  console.log("Massa: " + massa);
+  console.log("Altezza: " + altezza);
+  console.log("EtàAvg: " + etaAvg);
+  console.log("Tasso Alcolemico: " + tassoAlc);
 
-  function invioDati() {
-    massa = round(sensors[1]);
-    tassoAlc = sensors[0];
-    console.log("VarGen: " + varGen);
-    console.log("Massa: " + massa);
-    console.log("Altezza: " + altezza);
-    console.log("EtàAvg: " + etaAvg);
-    console.log("Tasso Alcolemico: " + tassoAlc);
-
-
-    if ( !etaAvg ) {
+  if (!etaAvg) {
     etaAvg = random(20, 50);
-    }
-
-
-    massaG = round((1.61 * massa / (altezza*altezza)) + (0.13 * etaAvg) - varGen - 13.9);
-    if ( !massaG ) {
-      massaG = random(19, 28);
-    }
-
-
-    if ( genere == 'male' ) {
-      idratazione = round((2.447 - (0.09156 * etaAvg) + (0.1074 * expAlt) + (0.3362 * massa))/massa * 100);       
-    } else if (genere == 'female') {
-      idratazione = round((-2.097 + (0.1069 * expAlt) + (0.2466 * massa))/massa * 100);
-    }
-
-
-    if ( !idratazione ) {
-      idratazione = random(40, 60);
-    }
-
-    valEn = round(tassoAlc + (massa * massa) + (massa * (massaG / 100)) - (massa * (idratazione / 100)));
-    valEc = round(valEn * 53.75);
-
-    stampaDati = nf((massaG) + "%\nidratazione   . . . . . . " + idratazione + "%\n\nVALORE ENERGETICO: " + valEn + " kWh \nVALORE ECONOMICO:  " + valEc + " EURO" + codiceUtente);
-    console.log("Massa grassa: " + stampaDati);
-  
-
-    serial.clear(); // clears the buffer of any outstanding data
-    serial.write(stampaDati); // send a byte to the Arduino
   }
 
+  massaG = round(
+    (1.61 * massa) / (altezza * altezza) + 0.13 * etaAvg - varGen - 13.9
+  );
+  if (!massaG) {
+    massaG = random(19, 28);
+  }
+
+  if (genere == "male") {
+    idratazione = round(
+      ((2.447 - 0.09156 * etaAvg + 0.1074 * expAlt + 0.3362 * massa) / massa) *
+        100
+    );
+  } else if (genere == "female") {
+    idratazione = round(
+      ((-2.097 + 0.1069 * expAlt + 0.2466 * massa) / massa) * 100
+    );
+  }
+
+  if (!idratazione) {
+    idratazione = random(40, 60);
+  }
+
+  valEn = round(
+    tassoAlc +
+      massa * massa +
+      massa * (massaG / 100) -
+      massa * (idratazione / 100)
+  );
+  valEc = round(valEn * 53.75);
+
+  stampaDati = nf(
+    massaG +
+      "%\nidratazione   . . . . . . " +
+      idratazione +
+      "%\n\nVALORE ENERGETICO: " +
+      valEn +
+      " kWh \nVALORE ECONOMICO:  " +
+      valEc +
+      " EURO" +
+      codiceUtente
+  );
+  console.log("Massa grassa: " + stampaDati);
+
+  serial.clear(); // clears the buffer of any outstanding data
+  serial.write(stampaDati); // send a byte to the Arduino
+}
 
 // ********************* ATTIVAZIONE PRIMA SCHERMATA -> COLLEGAMENTO CON ARDUINO *********************
 
 function connectionDone() {
-    // serial constructor
+  // serial constructor
   serial = new p5.SerialPort();
   // get a list of all connected serial devices
   serial.list();
   // serial port to use - you'll need to change this
-  serial.open('COM3');
+  serial.open("COM3");
   // callback for when the sketchs connects to the server
-  serial.on('connected', serverConnected);
+  serial.on("connected", serverConnected);
   // callback to print the list of serial devices
-  serial.on('list', gotList); 
+  serial.on("list", gotList);
   // what to do when we get serial data
-  serial.on('data', gotSensors);
+  serial.on("data", gotSensors);
   // what to do when there's an error
-  serial.on('error', gotError);
+  serial.on("error", gotError);
   // when to do when the serial port opens
-  serial.on('open', gotOpen);
+  serial.on("open", gotOpen);
   // what to do when the port closes
-  serial.on('close', gotClose);
- 
+  serial.on("close", gotClose);
 }
 
 function serverConnected() {
@@ -251,9 +265,9 @@ function gotList(thelist) {
     console.log(i + " " + thelist[i]);
     plusSlides(1);
 
-  //   if (i + " " + thelist[i] == "0 COM3") {
-  //     plusSlides(1);   
-  // }
+    //   if (i + " " + thelist[i] == "0 COM3") {
+    //     plusSlides(1);
+    // }
   }
 }
 
@@ -284,11 +298,11 @@ function gotData() {
 }
 
 function gotSensors() {
-  let currentString = serial.readStringUntil('\r\n'); // store the data in a variable
+  let currentString = serial.readStringUntil("\r\n"); // store the data in a variable
   trim(currentString); // get rid of whitespace
-  if (currentString.length > 0){
-  sensors = split(currentString, ",");
-  // console.log(sensors);
+  if (currentString.length > 0) {
+    sensors = split(currentString, ",");
+    // console.log(sensors);
   }
 }
 
@@ -297,38 +311,102 @@ function sliderScreen() {
     let schermata = document.getElementsById("schermataSlider");
     schermata.onclick = plusSlides(1);
     console.log("huhu");
-    }
+  }
 }
-        
+
 // Next/previous controls
 function plusSlides(n) {
-  showSlides(slideIndex[l] += n);
+  showSlides((slideIndex[l] += n));
 }
-        
+
 // Thumbnail image controls
 function currentSlide(n) {
-  showSlides(slideIndex[l] = n);
+  showSlides((slideIndex[l] = n));
 }
-        
+
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("ellipse");
-  if (n > slides.length) { 
-    page = window.open("./risultati.html", "_self");
-    }
-  if (n < 1) {slideIndex[l] = 1}
+  if (n > slides.length) {
+    page = window.open("./index.html", "_self");
+  }
+  if (n < 1) {
+    slideIndex[l] = 1;
+  }
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
-    }
+  }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
-    }
-  slides[slideIndex[l]-1].style.display = "block";
+  }
+  slides[slideIndex[l] - 1].style.display = "block";
   // console.log([slideIndex[l]-1]);
-    dots[slideIndex[l]-1].className += " active";
-}
+  dots[slideIndex[l] - 1].className += " active";
 
+  // SCHERMATA BILANCIA
+  if (n == 3) {
+    function tutorial() {
+      document.getElementById("bilancia").play();
+    }
+    setTimeout(tutorial, 0);
+
+    // misurazione
+    function mostra() {
+      document.getElementById("sali").style.display = "none";
+      document.getElementById("toppa").style.display = "block";
+      document.getElementById("barra").style.display = "none";
+    }
+    setTimeout(mostra, 5000);
+
+    function scorri() {
+      var elem = document.getElementById("myBar");
+      var width = 1;
+      var opacity = 1;
+      var id = setInterval(frame, 50);
+      function frame() {
+        if (width >= 183) {
+          clearInterval(id);
+          document.getElementById("misurazione").style.display = "none";
+          document.getElementById("completata").style.display = "block";
+        } else {
+          width++;
+          opacity++;
+          elem.style.width = width + "%";
+          elem.style.opacity = opacity + "%";
+        }
+      }
+    }
+    setTimeout(scorri, 6000);
+  }
+
+  // SCHERMATA ETILOMETRO
+  if (n == 4) {
+    function tutorial() {
+      document.getElementById("alcol").play();
+      document.getElementById("barra").style.display = "flex";
+    }
+    setTimeout(tutorial, 0);
+  }
+
+  // SCHERMATA STAMPANTE
+  if (n == 5) {
+    function tutorial() {
+      document.getElementById("stampante").play();
+      document.getElementById("barra").style.display = "flex";
+    }
+    setTimeout(tutorial, 0);
+
+    // avvio misurazione
+    function mostra() {
+      document.getElementById("stampa").style.display = "none";
+      document.getElementById("barra").style.display = "none";
+      document.getElementById("risultati").style.display = "block";    
+    }
+
+    setTimeout(mostra, 8000);
+  }
+}
 
 function draw() {
   let cU = round(random(100000, 999999));

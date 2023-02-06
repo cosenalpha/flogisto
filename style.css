@@ -1,8 +1,9 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  background-color: rgba(30, 30, 30);
-  overflow: hidden; 
+  background-color: white;
+  overflow: hidden;
 }
 
 canvas {
@@ -15,19 +16,10 @@ canvas {
 
 @font-face {
   font-family: neue-haas-grotesk-text, sans-serif;
-  font-style: normal; 
-  font-weight: 500; 
-  src: url("https://use.typekit.net/agg8qim.css") format ("open type"); 
-  }
-
-/* 
-.amador-regular-normal-white-130px {
-    color: white;
-    font-family:  amador, sans-serif;
-    font-size: 130px;
-    font-weight: 400;
-    font-style: normal;
-} */
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://use.typekit.net/agg8qim.css") format ("open type");
+}
 
 .neuehaasgroteskdisplaypro-65-medium-24px {
   font-family: neue-haas-grotesk-text, sans-serif;
@@ -36,116 +28,105 @@ canvas {
   font-style: normal;
 }
 
-.hidden, 
+.hidden,
 .hidden * {
-  pointer-events: none; 
+  pointer-events: none;
   visibility: hidden;
 }
 
-  /******************************** HEADER ********************************/
+/******************************** HEADER ********************************/
 
 .group-45 {
-  top: 8px;
-  height: 64px;
-  width: 139px;
- margin-left: 38px;
- letter-spacing: 1.5px;
- line-height: normal;
-  }
+  margin-top: 1vh;
+  margin-left: 4.5vh;
+  height: 5.6vh;
+}
 
 .azienda {
   color: rgba(249, 56, 34);
   font-weight: 500;
-  /* height: 44px;
-  margin-bottom: 2px;
-  margin-left: 173px; */
   width: 293px;
-height: 24px;
-left: 86vw;
-top: 38px;
-font-size: 20px;
-line-height: 24px;
-display: flex;
-align-items: center;
-text-align: center;
-  }
+  height: 24px;
+  left: 86vw;
+  top: 38px;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
 
 .flogisto {
   color: white;
   font-size: 20px;
-line-height: 24px;
-display: flex;
-width: 293px;
-height: 24px;
-left: 96vw;
-top: 38px;
-align-items: center;
-text-align: center;
+  line-height: 24px;
+  display: flex;
+  width: 293px;
+  height: 24px;
+  left: 96vw;
+  top: 38px;
+  align-items: center;
+  text-align: center;
   height: 33px;
   margin-bottom: 1px;
   margin-left: 16px;
   width: 293px;
-  }
+}
 
 .altri-servizi {
   color: white;
   font-size: 20px;
-line-height: 24px;
-display: flex;
-align-items: center;
-text-align: center;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
   height: 44px;
   margin-bottom: 2px;
   margin-left: 16px;
   width: 293px;
-  }
+}
 
 .header-desktop-w768px {
-align-items: center;
-display: flex;
-background-color: rgba(30, 30, 30);
-box-shadow: 1px 1px 30px -5px #000000;
-height: 11vh;
-width: 100%;
-position: fixed;
-z-index: 6;
-top: 0;
+  align-items: center;
+  display: flex;
+  background-color: rgba(30, 30, 30);
+  box-shadow: 1px 1px 30px -5px #000000;
+  height: 9vh;
+  width: 100%;
+  position: fixed;
+  z-index: 6;
+  top: 0;
 }
 
 .valign-text-middle {
-display: flex;
-flex-direction: column;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .image-129 {
-  height: 43px;
-  /* margin-left: 531px; */
-  margin-top: 1px;
+  height: 2.75vh;
+  margin-top: 0.5vh;
+  margin-left: 96%;
   position: fixed;
-/* object-fit: cover; */
-  width: 43px;
-  margin-left: 95%;
 }
 
+
 .darken {
-  background-color: rgba(249, 56, 34);;
+  background-color: rgba(249, 56, 34);
   height: 43px;
-  /* left: 1792px; */
   mix-blend-mode: darken;
-  position: fixed;
   top: 19px;
   width: 43px;
   margin-left: 95%;
   z-index: 7;
-  }
+}
 
-  /******************************** INIZIO SLIDESHOW ********************************/
+/******************************** INIZIO SLIDESHOW ********************************/
 
 /* Position the image container (needed to position the left and right arrows) */
 .container {
   position: relative;
-
 }
 
 /* Hide the images by default */
@@ -196,161 +177,169 @@ justify-content: center;
   top: 0;
 }
 
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: rgba(30, 30, 30);
-  padding: 2px 16px;
-  color: white;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
 
 /* Dotted Menu */
 
 .barraDots {
+  background-color: white;
   align-items: center;
   align-self: center;
   width: 100%;
+  height: 2vh;
   margin-top: 20vh;
+  padding: 1vh;
   display: flex;
   justify-content: center;
-  /* margin-left: auto;
-  margin-right: auto; */
-  /* width: 20%; */
-  gap: 58px;
+  gap: 4.5vh;
   z-index: 4;
 }
 
 .ellipse {
-background-color: white;
-border-radius: 10px;
-height: 7px;
-width: 7px;
-transition: width 0.6s ease, border-radius 0.6s ease;
+  background-color: rgba(30, 30, 30);
+  opacity: 0.8;
+  border-radius: 10px;
+  height: 1.2vh;
+  width: 1.2vh;
+  transition: width 0.6s ease, height 0.6s ease, border-radius 0.6s ease;
+  z-index: 1;
 }
 
 .active {
-background-color: white;
-border-radius: 26px;
-height: 23px;
-width: 23px;
+  opacity: 1;
+  border-radius: 26px;
+  height: 23px;
+  width: 23px;
+  z-index: 1;
 }
 
+/******************************** CONTENUTI SLIDESHOW ********************************/
 
-  /******************************** CONTENUTI SLIDESHOW ********************************/
-
-.pcnew-1 {
-  align-self: center; 
-  margin: 8vh auto 0px auto;
-  /* margin-right: auto; */
-  display: block;
-  /* height: 20%;  */
-  width: 30%;
-  /* margin-top: 40%;  */
-  /* object-fit: cover;  */
-  z-index: 5;
-}
-
-.title {
-color: white;
-font-family: neue-haas-grotesk-text, sans-serif;
-font-size: 2.3vw;
-font-weight: 500; 
-/* line-height: normal;  */
-margin-left: 194px; 
-margin-top: 7vh;
-/* min-height: 104px; */
-/* width: 1072px;  */
-z-index: 2;
-}
-
-.attacca-lalimentato {
-  color: white;
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 0; 
+  color: rgba(30, 30, 30);
   font-family: neue-haas-grotesk-text, sans-serif;
-  font-size: 1.3vw;
   font-weight: 500;
-  margin-left: 195px;
-  z-index: 3;
-  }
+  font-size: 1.4vw;
+  width: 50%;
+  padding: 4.7vh;
+}
 
-  /********************** Slider altezza **********************/
+.content h1 {
+  opacity: 0.7;
+}
 
-  .slidercontainer {
-    margin-top: 30vh;
-    width: 100%; /* Width of the outside container */
-   }
+#misurazione {
+  padding-left: 0;
+}
 
-   #tagSlider {
-    color: white;
-    font-family: neue-haas-grotesk-text, sans-serif;
-    font-size: 2.3vw;
-    font-weight: 500; 
-    position: absolute;
-    margin-left: 77vw;
-    align-items: center;
-    align-self: center;
-    float: right;
-  }
-  
-  /* The slider itself */
-  .slider {
-    align-items: center;
-    align-self: center;
-    margin-left: 70vw;
-    margin-bottom: 1.9vh;
-    rotate: -90deg;
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 73vh; /* Full-width */
-    height: 8px; /* spessore del coso */
-    background: white; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-  }
-  
-  /* Mouse-over effects */
-  .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-  
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    opacity: 1;
-    border-radius: 50%;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: white; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .slider::-moz-range-thumb {
-    opacity: 1;
-    border-radius: 50%;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: white; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
+#toppa {
+  margin-top: 24vh;
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+.mySlides video {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/********************** Slider altezza **********************/
+
+.slidercontainer {
+  position: fixed;
+  margin-top: 30vh;
+  width: 100%; /* Width of the outside container */
+}
+
+#tagSlider {
+  color:rgba(30, 30, 30);
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-size: 2.3vw;
+  font-weight: 500;
+  position: absolute;
+  margin-left: 77vw;
+  align-items: center;
+  align-self: center;
+  float: right;
+}
+
+/* The slider itself */
+.slider {
+  align-items: center;
+  align-self: center;
+  margin-left: 70vw;
+  margin-bottom: 1.9vh;
+  rotate: -90deg;
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 73vh; /* Full-width */
+  height: 8px; /* spessore del coso */
+  background: rgba(30, 30, 30); /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  opacity: 1;
+  border-radius: 50%;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgba(30, 30, 30); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  opacity: 1;
+  border-radius: 50%;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgba(30, 30, 30); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+#tag {
+  color: rgba(30, 30, 30);
+  text-align: center;
+  top: 50%;
+  left: 50%;
+}
 
 
-  #tag{
-   color: white;
-   text-align: center;
-   top: 50%;
-   left: 50%;
-  }
+
+/* tabella risultati */
+table {
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5vw;
+  margin-top: 30vh;
+  margin-left: 100vh;
+}
+
+th {
+  border-style: none;
+  text-align: left;
+  padding: 0.5vh;
+}
+
+td {
+  border-style: none;
+  text-align: right;
+  padding: 0.5vh;
+}
+
+

@@ -2,154 +2,247 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>VALUTAZIONE</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://use.typekit.net/agg8qim.css"> <!-- Adobe fonts -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/agg8qim.css" />
+    <!-- Adobe fonts -->
 
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script type="application/x-javascript" src="face-api.js"></script>  
+    <script type="application/x-javascript" src="face-api.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
-   	<script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5.serialserver@0.0.28/lib/p5.serialport.js"></script>   
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/p5.serialserver@0.0.28/lib/p5.serialport.js"
+    ></script>
     <!-- <script src="libraries/p5.min.js"></script> -->
     <script src="libraries/p5.sound.min.js"></script>
-
   </head>
 
   <body>
-
     <header>
       <!-- <div class="collegamento screen"> -->
-        <div class="header-desktop-w768px">
-        <div><img class="group-45" src="./assets/risorsa-2-1@2x.png"></div>
-        <div class="azienda valign-text-middle neuehaasgroteskdisplaypro-65-medium-24px">analisi</div>
-        <div class="flogisto valign-text-middle neuehaasgroteskdisplaypro-65-medium-24px">progressi</div>
-        <div class="altri-servizi valign-text-middle neuehaasgroteskdisplaypro-65-medium-24px">contratto</div>
-        <img class="image-129" src="./assets/image-129@2x.png" alt="image 129">
+      <div class="header-desktop-w768px">
+        <div><img class="group-45" src="/assets/flogisto.svg" /></div>
+        <img class="image-129" src="./assets/user.svg" alt="image 129" />
         <div class="darken"></div>
         <!-- </div> -->
-        </div>
+      </div>
     </header>
 
-<div class="container">
-
- <div class="barraDots">
-   <div class="ellipse"></div>
-   <div class="ellipse"></div>
-   <div class="ellipse"></div>
-   <div class="ellipse"></div>
-   <div class="ellipse"></div>
-  </div>
-      <!-- Full-width images with number text -->
-    <div class="mySlides" onclick="connectionDone()">
-      <img class="pcnew-1" src="./assets/pcnew-1.png" alt="pcnew 1-">
-      <h1 class="title">Collega il dispositivo al pc</h1>
-
-      <p class="attacca-lalimentato">
-        Attacca l'alimentatore alla presa di corrente e il cavo usb al pc.
-        <br/>Clicca sullo schermo per proseguire.  </p>
-    </div> 
-    
-    <div class="mySlides" id="schermataSlider">
-      <div class="slidercontainer">
-        <span id="tagSlider">100</span>
-        <input type="range" min="100" max="200" value="150" class="slider" id="myRange">
+    <div class="container">
+      <div class="barraDots" id="barra" style="display: flex">
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
+        <div class="ellipse"></div>
       </div>
-      <h1 class="title" style="margin-top: 18vh">Indica la tua altezza sullo slider.</h1>
 
-      <p class="attacca-lalimentato">
-        Trascina l'indicatore fino a quando non visualizzi la corretta misura.
-        <br/>Clicca INVIO schermo per proseguire.
-        <video autoplay muted id="video" width="400" height="400" style="margin: auto; display: none;"></video>
-        <!-- <div id="prediction">Gender: </div>
-        <div id="prediction1">Età: </div> -->
-        
-      </p>
-      </div>
-    
-    <div class="mySlides" onclick="plusSlides(1)">
-        <div id="sali" style="display: block;">
-        <img class="pcnew-1" src="./assets/pcnew-1.png" alt="pcnew 1-">
-        <h1 class="title">Sali sulla bilancia.</h1>
+      <video
+        autoplay
+        muted
+        id="webcam"
+        width="400"
+        height="400"
+        style="margin: auto; display: none"
+      ></video>
 
-        <p class="attacca-lalimentato">
-          Ricordati di essere a piedi nudi.<br>
-          Clicca sullo schermo per proseguire.
-        </p>
-        </div>
+      <!-------------------- n°1: CAVI --------------------->
+      <div class="mySlides" onclick="connectionDone()">
+        <!-- video -->
+        <video autoplay muted loop>
+          <source src="./assets/cavo.mp4" type="video/mp4" />
+        </video>
 
-        <!-- schermata di misurazione -->
-        <div id="misura" style="background-color: #1E1E1E; padding: 10vh; width: 100vh; height:100vh; z-index: 1; display: none">
-          <div id="myBar" style="height:24px; width:0; background-color:white;"></div>
-          <h1 class="title">Misurazione in corso...</h1>
-          <p class="attacca-lalimentato">
-            Riceverai un feedback quando la misurazione<br>
-            è andata a buon fine
+        <!-- testo -->
+        <div class="content">
+          <h1>collega il dispositivo al pc</h1>
+          <p>
+            Attacca l'alimentatore alla presa di corrente e il cavo usb al pc.
+            <br />Clicca sullo schermo per proseguire.
           </p>
         </div>
-    </div>
-
-    <div class="mySlides" onclick="plusSlides(1)">
-      <img class="pcnew-1" src="./assets/pcnew-1.png" alt="pcnew 1-">
-      <h1 class="title">Indossa la mascherina.</h1>
-
-      <p class="attacca-lalimentato">
-        Ti basterà respirare all'interno.<br>
-        Clicca sullo schermo per proseguire.
-      </p>
-    </div>
-
-    <div class="mySlides" onclick="invioDati()">
-      <img class="pcnew-1" src="./assets/pcnew-1.png" alt="pcnew 1-">
-      <h1 class="title">Analisi completata!</h1>
-
-      <p class="attacca-lalimentato">
-        Ritira il tuo scontrino.<br>
-        Grazie per aver scelto il servizio Flogisto
-      </p>
-    </div>
       </div>
-  
-    
+
+      <!------------------ n°2: ALTEZZA -------------------->
+      <div class="mySlides" id="schermataSlider">
+        <!-- slider -->
+        <div class="slidercontainer">
+          <span id="tagSlider">100</span>
+          <input
+            type="range"
+            min="100"
+            max="200"
+            value="150"
+            class="slider"
+            id="myRange"
+          />
+        </div>
+
+        <!-- testo -->
+        <div class="content">
+          <h1>indica la tua altezza sullo slider</h1>
+          <p>
+            Trascina l'indicatore fino a quando non visualizzi la corretta
+            misura. <br />Clicca INVIO per proseguire.
+          </p>
+        </div>
+      </div>
+
+      <!------------------ n°3: BILANCIA ------------------->
+      <div class="mySlides" onclick="plusSlides(1)">
+        <div id="sali" style="display: block">
+          <!-- video -->
+          <video id="bilancia" muted loop>
+            <source src="./assets/piedini.mp4" type="video/mp4" />
+          </video>
+
+          <!-- testo -->
+          <div class="content">
+            <h1>sali sulla bilancia</h1>
+            <p>
+              Ricordati di essere a piedi nudi. <br />Clicca sullo schermo per
+              proseguire.
+            </p>
+          </div>
+        </div>
+
+        <!------------ MISURAZIONE IN CORSO... ------------->
+        <div id="toppa" style="display: none">
+          <div
+            id="misura"
+            style="
+              background-color: white;
+              padding: 4.7vh;
+              width: 100vh;
+              height: 100vh;
+              z-index: 1;
+            "
+          >
+            <div
+              id="myBar"
+              style="
+                height: 2vh;
+                width: 0;
+                background-color: #1e1e1e;
+                opacity: 0;
+              "
+            ></div>
+
+            <!-- testo -->
+            <div class="content" id="misurazione">
+              <h1>misurazione in corso...</h1>
+              <p>
+                Riceverai un feedback quando la misurazione <br />è andata a
+                buon fine.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!------------ COMPLETATA ------------->
+
+        <!-- testo -->
+        <div class="content" id="completata" style="display: none">
+          <h1>misurazione completata</h1>
+          <p><br />Clicca sullo schermo per proseguire.</p>
+        </div>
+      </div>
+
+      <!------------------ n°4: MASCHERINA --------------------->
+      <div class="mySlides" onclick="plusSlides(1)">
+        <!-- video -->
+        <video id="alcol" muted loop>
+          <source src="./assets/alcol.mp4" type="video/mp4" />
+        </video>
+
+        <!-- testo -->
+        <div class="content">
+          <h1>indossa la mascherina</h1>
+          <p>
+            Ti basterà respirare all'interno. <br />Clicca sullo schermo per
+            proseguire.
+          </p>
+        </div>
+      </div>
+
+      <!---------------- n°5: ANALISI COMPLETATA ------------------>
+      <div class="mySlides" onclick="invioDati()">
+        <div id="stampa" style="display: block">
+          <!-- video -->
+          <video id="stampante" muted loop>
+            <source src="./assets/stampante.mp4" type="video/mp4" />
+          </video>
+
+          <!-- testo -->
+          <div class="content">
+            <h1>analisi completata!</h1>
+            <p>
+              Ritira il tuo scontrino.
+              <br />
+              Grazie per aver scelto il servizio FLogisto.
+            </p>
+          </div>
+        </div>
+
+        <!------------ RISULTATI ------------->
+        <div id="risultati" style="display: none">
+          <!-- tabella -->
+          <table style="width: 30%">
+            <tr>
+              <th>Massa</th>
+              <td>52 kg</td>
+            </tr>
+            <tr>
+              <th>Massa grassa</th>
+              <td>10 kg</td>
+            </tr>
+            <tr>
+              <th>Tasso alcolemico</th>
+              <td>0 g/L</td>
+            </tr>
+            <tr>
+              <th>Idratazione</th>
+              <td>65 %</td>
+            </tr>
+
+            <tr>
+              <th></th>
+              <td></td>
+            </tr>
+
+            <tr style="color: red">
+              <th>VALORE ENERGETICO kWh</th>
+              <td>28.571</td>
+            </tr>
+
+            <tr style="color: red">
+              <th>VALORE ECONOMICO €€</th>
+              <td>200.000</td>
+            </tr>
+          </table>
+
+          <!-- testo -->
+          <div class="content">
+            <h1>oggi vali 570,396 kWh</h1>
+            <p>
+              <br />
+              Clicca per effettuare una nuova analisi
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIMUOVERE! -->
       <!-- Next and previous buttons -->
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    
-      <!-- Image text -->
-      <div class="caption-container">
-        <p id="caption"></p>
-      </div>
 
       <script src="sketch.js"></script>
-
-      <script>        
-      function mostra() {
-        document.getElementById('sali').style.display='none';
-        document.getElementById('misura').style.display='block';
-        }
-      setTimeout(mostra, 10000);
-
-      function scorri() {
-        var elem = document.getElementById("myBar");   
-        var width = 1;
-        var id = setInterval(frame, 50);
-        function frame() {
-          if (width >= 190) {
-            clearInterval(id);
-          } else {
-            width++; 
-            elem.style.width = width + '%'; 
-          }
-        }
-      }
-      setTimeout(scorri, 11000);
-    </script>
-    
     </div>
   </body>
 </html>
-
-
-
