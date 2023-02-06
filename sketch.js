@@ -19,6 +19,15 @@ let valEn;
 let valEc;
 let codiceUtente;
 
+let heig;
+let mass;
+let fatMass;
+let alcLevel;
+let hydra;
+let energy;
+let money;
+let oggi;
+
 let clock = 1000; //5 secondi
 let timer;
 let expAlt;
@@ -398,14 +407,38 @@ function showSlides(n) {
     }
     setTimeout(tutorial, 0);
 
-    // avvio misurazione
+    // schermata risultati
     function mostra() {
       document.getElementById("stampa").style.display = "none";
       document.getElementById("barra").style.display = "none";
       document.getElementById("risultati").style.display = "block";    
     }
-
     setTimeout(mostra, 8000);
+
+    // mostra valori misurazione
+    heig = document.getElementById("heig");
+    heig.innerHTML = altezza + " m"; 
+
+    mass = document.getElementById("mass");
+    mass.innerHTML = massa + " kg"; 
+
+    fatMass = document.getElementById("fatMass");
+    fatMass.innerHTML = massaG + " %"; 
+
+    alcLevel = document.getElementById("alcLevel");
+    alcLevel.innerHTML = tassoAlc + " g/L"; 
+
+    hydra = document.getElementById("hydra");
+    hydra.innerHTML = idratazione + " %"; 
+
+    energy = document.getElementById("energy");
+    energy.innerHTML = valEn + " kWh"; 
+
+    money = document.getElementById("money");
+    money.innerHTML = valEc + " €"; 
+
+    oggi = document.getElementById("oggi");
+    oggi.innerHTML = valEn + " kWh"; 
   }
 }
 
