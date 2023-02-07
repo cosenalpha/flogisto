@@ -234,7 +234,16 @@ canvas {
   padding-left: 0;
 }
 
+#misurazione2 {
+  padding-left: 0;
+}
+
+
 #toppa {
+  margin-top: 24vh;
+}
+
+#toppa2 {
   margin-top: 24vh;
 }
 

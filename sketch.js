@@ -374,8 +374,6 @@ function showSlides(n) {
     }
     setTimeout(tutorial, 0);
 
-    // misurazione
- 
     // // da sostituire
     // setTimeout(plusSlides(1), 6000);
   }

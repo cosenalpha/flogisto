@@ -53,7 +53,7 @@
       ></video>
 
       <!-------------------- n°1: CAVI --------------------->
-      <div class="mySlides" onclick="connectionDone()">
+      <div class="mySlides" onclick="connectionDone(), plusSlides(1)">
         <!-- video -->
         <video autoplay muted loop>
           <source src="./assets/cavo.mp4" type="video/mp4" />
@@ -95,7 +95,7 @@
       </div>
 
       <!------------------ n°3: BILANCIA ------------------->
-      <div class="mySlides" onclick="mostra()">
+      <div class="mySlides" onclick="mostra1()">
         <div id="sali" style="display: block">
           <!-- video -->
           <video id="bilancia" muted loop>
@@ -131,6 +131,7 @@
                 width: 0;
                 background-color: #1e1e1e;
                 opacity: 0;
+                z-index: 1;
               "
             ></div>
 
@@ -150,26 +151,76 @@
         <!-- testo -->
         <div class="content" id="completata" style="display: none">
           <h1>misurazione completata</h1>
-          <p><br />Clicca sullo schermo per proseguire.</p>
+          <p>
+            <br/>
+          </p>
         </div>
       </div>
 
       <!------------------ n°4: MASCHERINA --------------------->
-      <div class="mySlides" onclick="plusSlides(1)">
-        <!-- video -->
-        <video id="alcol" muted loop>
-          <source src="./assets/alcol.mp4" type="video/mp4" />
-        </video>
+      <div class="mySlides" onclick="mostra2()">
+
+        <div id="indossa" style="display: block">
+          <!-- video -->
+          <video id="alcol" muted loop>
+            <source src="./assets/alcol.mp4" type="video/mp4" />
+          </video>
+
+          <!-- testo -->
+          <div class="content">
+            <h1>indossa la mascherina</h1>
+            <p>
+              Ti basterà respirare all'interno. 
+              <br />Clicca sullo schermo per proseguire.
+            </p>
+          </div>
+        </div>
+
+        <!------------ MISURAZIONE IN CORSO... ------------->
+        <div id="toppa2" style="display: none">
+          <div
+            id="misura2"
+            style="
+              background-color: white;
+              padding: 4.7vh;
+              width: 100vh;
+              height: 100vh;
+              z-index: 1;
+            "
+          >
+            <div
+              id="myBar2"
+              style="
+                height: 2vh;
+                width: 0;
+                background-color: #1e1e1e;
+                opacity: 0;
+                z-index: 1;
+              "
+            ></div>
+
+            <!-- testo -->
+            <div class="content" id="misurazione2">
+              <h1>misurazione in corso...</h1>
+              <p>
+                Riceverai un feedback quando la misurazione <br />è andata a
+                buon fine.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!------------ COMPLETATA ------------->
 
         <!-- testo -->
-        <div class="content">
-          <h1>indossa la mascherina</h1>
+        <div class="content" id="completata2" style="display: none">
+          <h1>misurazione completata</h1>
           <p>
-            Ti basterà respirare all'interno. <br />Clicca sullo schermo per
-            proseguire.
+            <br/>
           </p>
         </div>
       </div>
+        
 
       <!---------------- n°5: ANALISI COMPLETATA ------------------>
       <div class="mySlides" onclick="invioDati()">
@@ -227,7 +278,7 @@
 
             <tr style="color: red">
               <th>VALORE ECONOMICO</th>
-              <td id="money">200.000</td>
+              <td id="money"></td>
             </tr>
           </table>
 
@@ -249,11 +300,13 @@
 
       <script src="sketch.js"></script>
       <script>
-      function mostra() {
+
+      // misurazione
+      function mostra1() {
           document.getElementById("sali").style.display = "none";
-          document.getElementById("toppa").style.display = "block";
           document.getElementById("barra").style.display = "none";
-          
+          document.getElementById("toppa").style.display = "block";
+
           var elem = document.getElementById("myBar");
           var width = 1;
           var opacity = 1;
@@ -263,11 +316,43 @@
               clearInterval(id);
               document.getElementById("misurazione").style.display = "none";
               document.getElementById("completata").style.display = "block";
+              function succ() {
+                plusSlides(1);
+              }
+              setTimeout(succ, 3000);
             } else {
               width++;
               opacity++;
               elem.style.width = width + "vw";
               elem.style.opacity = opacity + "%";
+            }
+          }
+        }
+      
+
+        function mostra2() {
+          document.getElementById("indossa").style.display = "none";
+          document.getElementById("barra").style.display = "none";
+          document.getElementById("toppa2").style.display = "block";
+
+          var elem2 = document.getElementById("myBar2");
+          var width2 = 1;
+          var opacity2 = 1;
+          var id2 = setInterval(frame, 50);
+          function frame() {
+            if (width2 >= 95) {
+              clearInterval(id2);
+              document.getElementById("misurazione2").style.display = "none";
+              document.getElementById("completata2").style.display = "block";
+              function succ2() {
+                plusSlides(1);
+              }
+              setTimeout(succ2, 3000);
+            } else {
+              width2++;
+              opacity2++;
+              elem2.style.width = width2 + "vw";
+              elem2.style.opacity = opacity2 + "%";
             }
           }
         }
