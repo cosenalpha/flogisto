@@ -26,6 +26,7 @@ let alcLevel;
 let hydra;
 let energy;
 let money;
+let utente;
 let oggi;
 
 let clock = 1000; //5 secondi
@@ -248,6 +249,9 @@ function invioDati() {
 
   money = document.getElementById("money");
   money.innerHTML = valEc + " €"; 
+
+  utente = document.getElementById("utente");
+  utente.innerHTML = codiceUtente; 
 
   oggi = document.getElementById("oggi");
   oggi.innerHTML = valEn + " kWh"; 
