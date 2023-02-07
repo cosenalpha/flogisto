@@ -403,10 +403,9 @@ function showSlides(n) {
       document.getElementById("barra").style.display = "none";
       document.getElementById("risultati").style.display = "block";    
     }
-    setTimeout(fine, 8000);
+    setTimeout(fine, 10000);
 
-    // mostra valori misurazione
-
+    setTimeout(invioDati(), 2000); 
   }
 }
 

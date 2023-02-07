@@ -223,7 +223,7 @@
         
 
       <!---------------- n°5: ANALISI COMPLETATA ------------------>
-      <div class="mySlides" onclick="invioDati()">
+      <div class="mySlides">
         <div id="stampa" style="display: block">
           <!-- video -->
           <video id="stampante" muted loop>
@@ -301,7 +301,7 @@
       <script src="sketch.js"></script>
       <script>
 
-      // misurazione
+      // misurazione bliancia
       function mostra1() {
           document.getElementById("sali").style.display = "none";
           document.getElementById("barra").style.display = "none";
@@ -328,34 +328,35 @@
             }
           }
         }
-      
 
-        function mostra2() {
-          document.getElementById("indossa").style.display = "none";
-          document.getElementById("barra").style.display = "none";
-          document.getElementById("toppa2").style.display = "block";
 
-          var elem2 = document.getElementById("myBar2");
-          var width2 = 1;
-          var opacity2 = 1;
-          var id2 = setInterval(frame, 50);
-          function frame() {
-            if (width2 >= 95) {
-              clearInterval(id2);
-              document.getElementById("misurazione2").style.display = "none";
-              document.getElementById("completata2").style.display = "block";
-              function succ2() {
-                plusSlides(1);
-              }
-              setTimeout(succ2, 3000);
-            } else {
-              width2++;
-              opacity2++;
-              elem2.style.width = width2 + "vw";
-              elem2.style.opacity = opacity2 + "%";
+      // misurazione mascherina
+      function mostra2() {
+        document.getElementById("indossa").style.display = "none";
+        document.getElementById("barra").style.display = "none";
+        document.getElementById("toppa2").style.display = "block";
+
+        var elem2 = document.getElementById("myBar2");
+        var width2 = 1;
+        var opacity2 = 1;
+        var id2 = setInterval(frame, 50);
+        function frame() {
+          if (width2 >= 95) {
+            clearInterval(id2);
+            document.getElementById("misurazione2").style.display = "none";
+            document.getElementById("completata2").style.display = "block";
+            function succ2() {
+              plusSlides(1);
             }
+            setTimeout(succ2, 3000);
+          } else {
+            width2++;
+            opacity2++;
+            elem2.style.width = width2 + "vw";
+            elem2.style.opacity = opacity2 + "%";
           }
         }
+      }
 
       </script>
     </div>
