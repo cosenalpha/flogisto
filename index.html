@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>VALUTAZIONE</title>
+    <title>area personale</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style2.css" />
     <link rel="stylesheet" href="https://use.typekit.net/agg8qim.css" />
     <!-- Adobe fonts -->
 
@@ -33,332 +33,66 @@
       </div>
     </header>
 
-    <div class="container">
-      <div class="barraDots" id="barra" style="display: flex">
-        <div class="ellipse"></div>
-        <div class="ellipse"></div>
-        <div class="ellipse"></div>
-        <div class="ellipse"></div>
-        <div class="ellipse"></div>
-      </div>
+     
+        <!-- testo -->
+        <div class="content" style="width: 100%; height: 400px;">
+          <img src="./assets/benvenut.svg" style="width: 30vw; top: 0.5vh;   margin-top: 30vh" alt="benvenut*">
+          <img src="./assets/donna.png" style="position: absolute; margin-left: 18vw; margin-top: 0; width: 50vw;" alt="donna">
+          <p style="color:white">
+            In questa sezione troverai  i tuoi dati
+            <br />relativi al servizio, i tuoi progressi 
+            <br />e potrai effettuare una nuova misurazione
+            <br />del tuo valore energetico.
+          </p>
+          <p onclick=analizza()>effettua un'analisi</p>
+        </div>
 
-      <!-------------------- WEBCAM --------------------->
-      <video
-        autoplay
-        muted
-        id="webcam"
-        width="400"
-        height="400"
-        style="margin: auto; display: none"
-      ></video>
 
-      <!-------------------- n°1: CAVI --------------------->
-      <div class="mySlides" onclick="connectionDone(), plusSlides(1)">
+        <div class="content2" style="height:100vh">
         <!-- video -->
-        <video autoplay muted loop>
-          <source src="./assets/cavo.mp4" type="video/mp4" />
+        <video id="packaging" muted loop autoplay style="width:100vw;">
+          <source src="./assets/packaging.mp4" type="video/mp4" />
         </video>
+        </div>
 
-        <!-- testo -->
-        <div class="content">
-          <h1>collega il dispositivo al pc</h1>
-          <p>
-            Attacca l'alimentatore alla presa di corrente e il cavo usb al pc.
-            <br />Clicca sullo schermo per proseguire.
+
+        <div class="content" style="margin-top: 235vh;">
+          <img src="./assets/stampante.png" style="position: absolute; margin-left: 52vw; width: 40vw;" alt="donna">
+          <h1>tieni traccia
+          </br> dei tuoi progressi</h1>
+          <p style="color:white">
+            Analizza la cronologia completa 
+            <br />dei dati relativi al tuo potere energetico
+            <br />e lasciati guidare dai nostri consigli 
           </p>
-        </div>
+        <p>vedi i progressi</p>
       </div>
 
-      <!------------------ n°2: ALTEZZA -------------------->
-      <div class="mySlides" id="schermataSlider">
-        <!-- slider -->
-        <div class="slidercontainer">
-          <span id="tagSlider">100</span>
-          <input
-            type="range"
-            min="100"
-            max="200"
-            value="150"
-            class="slider"
-            id="myRange"
-          />
-        </div>
 
-        <!-- testo -->
-        <div class="content">
-          <h1>indica la tua altezza sullo slider</h1>
-          <p>
-            Trascina l'indicatore fino a quando non visualizzi la corretta
-            misura. <br />Clicca INVIO per proseguire.
+        <div class="content" style="margin-top: 320vh;">
+          <img src="./assets/folder.png" style="position: absolute; margin-left: 0vw; margin-top: -10vh; width: 40vw;" alt="donna">
+          <div style="margin-left: 50vw; width: 100%">
+          <h1>ispeziona
+          </br> il tuo contratto</h1>
+          <p style="color:white">
+            Analizza il contratto che hai firmato 
+            <br />con Flogisto, ricordando 
+            <br />che non è più suscettibile di modifiche
           </p>
-        </div>
+        <p>ispeziona il contratto</p>
+         </div>
       </div>
 
-      <!------------------ n°3: BILANCIA ------------------->
-      <div class="mySlides" onclick="mostra1()">
-        <div id="sali" style="display: block">
-          <!-- video -->
-          <video id="bilancia" muted loop>
-            <source src="./assets/piedini.mp4" type="video/mp4" />
-          </video>
+      <footer style="position: absolute; margin-top: 400vh;">
+        <img src="./assets/footer.png" alt="footer" style="width:100%">
+      </footer>
 
-          <!-- testo -->
-          <div class="content">
-            <h1>sali sulla bilancia</h1>
-            <p>
-              Ricordati di essere a piedi nudi. <br />Clicca sullo schermo per
-              proseguire.
-            </p>
-          </div>
-        </div>
 
-        <!------------ MISURAZIONE IN CORSO... ------------->
-        <div id="toppa" style="display: none">
-          <div
-            id="misura"
-            style="
-              background-color: white;
-              padding: 4.7vh;
-              width: 100vh;
-              height: 100vh;
-              z-index: 1;
-            "
-          >
-            <div
-              id="myBar"
-              style="
-                height: 2vh;
-                width: 0;
-                background-color: #1e1e1e;
-                opacity: 0;
-                z-index: 1;
-              "
-            ></div>
-
-            <!-- testo -->
-            <div class="content" id="misurazione">
-              <h1>misurazione in corso...</h1>
-              <p>
-                Riceverai un feedback quando la misurazione <br />è andata a
-                buon fine.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!------------ COMPLETATA ------------->
-
-        <!-- testo -->
-        <div class="content" id="completata" style="display: none">
-          <h1>misurazione completata</h1>
-          <p>
-            <br/>
-          </p>
-        </div>
-      </div>
-
-      <!------------------ n°4: MASCHERINA --------------------->
-      <div class="mySlides" onclick="mostra2()">
-
-        <div id="indossa" style="display: block">
-          <!-- video -->
-          <video id="alcol" muted loop>
-            <source src="./assets/alcol.mp4" type="video/mp4" />
-          </video>
-
-          <!-- testo -->
-          <div class="content">
-            <h1>indossa la mascherina</h1>
-            <p>
-              Ti basterà respirare all'interno. 
-              <br />Clicca sullo schermo per proseguire.
-            </p>
-          </div>
-        </div>
-
-        <!------------ MISURAZIONE IN CORSO... ------------->
-        <div id="toppa2" style="display: none">
-          <div
-            id="misura2"
-            style="
-              background-color: white;
-              padding: 4.7vh;
-              width: 100vh;
-              height: 100vh;
-              z-index: 1;
-            "
-          >
-            <div
-              id="myBar2"
-              style="
-                height: 2vh;
-                width: 0;
-                background-color: #1e1e1e;
-                opacity: 0;
-                z-index: 1;
-              "
-            ></div>
-
-            <!-- testo -->
-            <div class="content" id="misurazione2">
-              <h1>misurazione in corso...</h1>
-              <p>
-                Riceverai un feedback quando la misurazione <br />è andata a
-                buon fine.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!------------ COMPLETATA ------------->
-
-        <!-- testo -->
-        <div class="content" id="completata2" style="display: none">
-          <h1>misurazione completata</h1>
-          <p>
-            <br/>
-          </p>
-        </div>
-      </div>
-        
-
-      <!---------------- n°5: ANALISI COMPLETATA ------------------>
-      <div class="mySlides">
-        <div id="stampa" style="display: block">
-          <!-- video -->
-          <video id="stampante" muted loop>
-            <source src="./assets/stampante.mp4" type="video/mp4" />
-          </video>
-
-          <!-- testo -->
-          <div class="content">
-            <h1>analisi completata!</h1>
-            <p>
-              Ritira il tuo scontrino.
-              <br />
-              Grazie per aver scelto il servizio FLogisto.
-            </p>
-          </div>
-        </div>
-
-        <!------------ RISULTATI ------------->
-        <div id="risultati" style="display: none">
-          <!-- tabella -->
-          <table style="width: 30%">
-            <tr>
-              <th>Altezza</th>
-              <td id="heig"></td>
-            </tr>
-            <tr>
-              <th>Massa</th>
-              <td id="mass"></td>
-            </tr>
-            <tr>
-              <th>Massa grassa</th>
-              <td id="fatMass"></td>
-            </tr>
-            <tr>
-              <th>Tasso alcolemico</th>
-              <td id="alcLevel"></td>
-            </tr>
-            <tr>
-              <th>Idratazione</th>
-              <td id="hydra"></td>
-            </tr>
-
-            <tr>
-              <th></th>
-              <td></td>
-            </tr>
-
-            <tr style="color: red">
-              <th>VALORE ENERGETICO</th>
-              <td id="energy"></td>
-            </tr>
-
-            <tr style="color: red">
-              <th>VALORE ECONOMICO</th>
-              <td id="money"></td>
-            </tr>
-          </table>
-
-          <!-- testo -->
-          <div class="content">
-            <h1><span id="utente"></span>
-            </br>oggi vali <span id="oggi"></span></h1>
-            <p onclick="window.location.reload()">
-              <br />
-              Clicca per effettuare una nuova analisi
-            </p>
-          </div>
-        </div>
-      </div>
-
- 
-      <!-- Next and previous buttons -->
-      <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-
-      <script src="sketch.js"></script>
+      <script src="sketch2.js"></script>
       <script>
-
-      // misurazione bliancia
-      function mostra1() {
-          document.getElementById("sali").style.display = "none";
-          document.getElementById("barra").style.display = "none";
-          document.getElementById("toppa").style.display = "block";
-
-          var elem = document.getElementById("myBar");
-          var width = 1;
-          var opacity = 1;
-          var id = setInterval(frame, 50);
-          function frame() {
-            if (width >= 95) {
-              clearInterval(id);
-              document.getElementById("misurazione").style.display = "none";
-              document.getElementById("completata").style.display = "block";
-              function succ() {
-                plusSlides(1);
-              }
-              setTimeout(succ, 3000);
-            } else {
-              width++;
-              opacity++;
-              elem.style.width = width + "vw";
-              elem.style.opacity = opacity + "%";
-            }
-          }
+        function analizza() {
+          window.open("./misurazione.html", "_self");
         }
-
-
-      // misurazione mascherina
-      function mostra2() {
-        document.getElementById("indossa").style.display = "none";
-        document.getElementById("barra").style.display = "none";
-        document.getElementById("toppa2").style.display = "block";
-
-        var elem2 = document.getElementById("myBar2");
-        var width2 = 1;
-        var opacity2 = 1;
-        var id2 = setInterval(frame, 50);
-        function frame() {
-          if (width2 >= 95) {
-            clearInterval(id2);
-            document.getElementById("misurazione2").style.display = "none";
-            document.getElementById("completata2").style.display = "block";
-            function succ2() {
-              plusSlides(1);
-            }
-            setTimeout(succ2, 3000);
-          } else {
-            width2++;
-            opacity2++;
-            elem2.style.width = width2 + "vw";
-            elem2.style.opacity = opacity2 + "%";
-          }
-        }
-      }
-
       </script>
     </div>
   </body>
