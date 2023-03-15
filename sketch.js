@@ -183,11 +183,31 @@ function keyPressed() {
 function invioDati() {
   massa = round(sensors[1]);
   tassoAlc = sensors[0];
+
+  if (!tassoAlc) {
+    tassoAlc = 0;
+  }
   console.log("VarGen: " + varGen);
   console.log("Massa: " + massa);
   console.log("Altezza: " + altezza);
   console.log("EtàAvg: " + etaAvg);
   console.log("Tasso Alcolemico: " + tassoAlc);
+
+  // if (massa == 0) {
+    if (altezza > 1.40 && altezza < 1.50) {
+      massa = round(random(40, 47));
+    } else if ( altezza >= 1.50 && altezza < 1.60) {
+      massa = round(random(48, 57));
+    } else if ( altezza >= 1.60 && altezza < 1.70) {
+      massa = round(random(55, 73));
+    } else if ( altezza >= 1.70 && altezza < 1.80) {
+      massa = round(random(60, 78));
+    } else if ( altezza >= 1.80 && altezza < 1.90) {
+      massa = round(random(70, 83));
+    } else if ( altezza >= 1.90) {
+      massa = round(random(80, 95));
+    }
+  
 
   if (!etaAvg) {
     etaAvg = random(20, 50);
@@ -222,7 +242,7 @@ function invioDati() {
       massa * (idratazione / 100)) / 10));
   valEc = nf(round(valEn * 53.75));
 
-  stampaDati = nf((massaG) + "%\nidratazione   . . . . . . " + round(idratazione) + "%\naltezza   . . . . . . . . " + altezza + " m\n\nVALORE ENERGETICO: " + valEn + " kWh \nVALORE ECONOMICO:  " + valEc + " EURO" + codiceUtente);
+  stampaDati = nf(massa + " kg\nmassa grassa  . . . . . . " + (massaG) + "%\nidratazione   . . . . . . " + round(idratazione) + "%\naltezza   . . . . . . . . " + altezza + " m\n\nVALORE ENERGETICO: " + valEn + " kWh \nVALORE ECONOMICO:  " + valEc + " EURO" + codiceUtente);
 
   console.log("Massa grassa: " + stampaDati);
 
@@ -278,6 +298,7 @@ function connectionDone() {
   serial.on("open", gotOpen);
   // what to do when the port closes
   serial.on("close", gotClose);
+  // plusSlides(1);
 }
 
 function serverConnected() {
