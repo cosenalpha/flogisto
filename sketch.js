@@ -193,20 +193,23 @@ function invioDati() {
   console.log("EtàAvg: " + etaAvg);
   console.log("Tasso Alcolemico: " + tassoAlc);
 
+
+  // ********************* algoritmo calcolo massa *********************
+
   // if (massa == 0) {
-    if (altezza > 1.40 && altezza < 1.50) {
-      massa = round(random(40, 47));
-    } else if ( altezza >= 1.50 && altezza < 1.60) {
-      massa = round(random(48, 57));
-    } else if ( altezza >= 1.60 && altezza < 1.70) {
-      massa = round(random(55, 73));
-    } else if ( altezza >= 1.70 && altezza < 1.80) {
-      massa = round(random(60, 78));
-    } else if ( altezza >= 1.80 && altezza < 1.90) {
-      massa = round(random(70, 83));
-    } else if ( altezza >= 1.90) {
-      massa = round(random(80, 95));
-    }
+    // if (altezza > 1.40 && altezza < 1.50) {
+    //   massa = round(random(40, 47));
+    // } else if ( altezza >= 1.50 && altezza < 1.60) {
+    //   massa = round(random(48, 57));
+    // } else if ( altezza >= 1.60 && altezza < 1.70) {
+    //   massa = round(random(55, 73));
+    // } else if ( altezza >= 1.70 && altezza < 1.80) {
+    //   massa = round(random(60, 78));
+    // } else if ( altezza >= 1.80 && altezza < 1.90) {
+    //   massa = round(random(70, 83));
+    // } else if ( altezza >= 1.90) {
+    //   massa = round(random(80, 95));
+    // }
   
 
   if (!etaAvg) {
@@ -220,15 +223,21 @@ function invioDati() {
     massaG = random(19, 28);
   }
 
+  let avrWm = 48 + (1.1 * ( altezza * 100 - 152));
+  let avrWw = 45.4 + (0.9 * ( altezza * 100 - 152));
+
+  // Male ideal body weight = 48 kilograms (106 lb) + 1.1 kilograms (2.4 lb) × (height (cm) − 152)
+  // Female ideal body weight = 45.4 kilograms (100 lb) + 0.9 kilograms (2.0 lb) × (height (cm) − 152)
+
   if (genere == "male") {
-    idratazione = round(
-      ((2.447 - 0.09156 * etaAvg + 0.1074 * expAlt + 0.3362 * massa) / massa) *
-        100
-    );
+    idratazione = round(((2.447 - 0.09156 * etaAvg + 0.1074 * expAlt + 0.3362 * massa) / massa) * 100);
+    massa = round(random(avrWm - 7, avrWm + 7));
   } else if (genere == "female") {
-    idratazione = round(
-      ((-2.097 + 0.1069 * expAlt + 0.2466 * massa) / massa) * 100
-    );
+    idratazione = round(((-2.097 + 0.1069 * expAlt + 0.2466 * massa) / massa) * 100);
+    massa = round(random(avrWw - 7, avrWw + 7));
+  } else if (!genere) {
+    idratazione = round(((-2.097 + 0.1069 * expAlt + 0.2466 * massa) / massa) * 100);
+    massa = round(random(avrWw - 7, avrWw + 7));
   }
 
   if (!idratazione) {
@@ -244,8 +253,7 @@ function invioDati() {
 
   stampaDati = nf(massa + " kg\nmassa grassa  . . . . . . " + (massaG) + "%\nidratazione   . . . . . . " + round(idratazione) + "%\naltezza   . . . . . . . . " + altezza + " m\n\nVALORE ENERGETICO: " + valEn + " kWh \nVALORE ECONOMICO:  " + valEc + " EURO" + codiceUtente);
 
-  console.log("Massa grassa: " + stampaDati);
-
+  console.log("Massa: " + stampaDati);
   serial.clear(); // clears the buffer of any outstanding data
   serial.write(stampaDati); // send a byte to the Arduino
 
