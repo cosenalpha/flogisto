@@ -2,8 +2,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(30,30,30);
-  overflow:auto;
+  background-color: white;
+  overflow: hidden;
 }
 
 canvas {
@@ -34,52 +34,66 @@ canvas {
   visibility: hidden;
 }
 
-/******************************** HEADER ********************************/
-
-.group-45 {
-  margin-top: 1vh;
-  margin-left: 4.5vh;
-  height: 5.6vh;
-}
-
-.azienda {
-  color: rgba(249, 56, 34);
-  font-weight: 500;
-  width: 293px;
-  height: 24px;
-  left: 86vw;
-  top: 38px;
-  font-size: 20px;
-  line-height: 24px;
+/******************************** MENÙ ********************************/
+header {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0% 2%;
   align-items: center;
   text-align: center;
-}
-
-.header-desktop-w768px {
-  align-items: center;
-  display: flex;
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-size: 0.9em;
+  font-weight: 500;
   background-color: rgba(30, 30, 30);
   box-shadow: 1px 1px 30px -5px #000000;
   height: 9vh;
   width: 100%;
   position: fixed;
-  z-index: 6;
   top: 0;
+  z-index: 6;
 }
 
-.valign-text-middle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.mouse {
+  opacity: 0.75;
 }
 
-.image-129 {
+.mouse:hover {
+  opacity: 1;
+}
+
+#user {
   height: 2.75vh;
-  margin-top: 0.5vh;
-  margin-left: 96%;
-  position: fixed;
 }
+
+.flog {
+  margin-top: 7%;
+  height: 5.6vh;
+}
+
+#menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#menu a {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0% 22%;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /******************************** INIZIO SLIDESHOW ********************************/
 
@@ -175,32 +189,18 @@ canvas {
 
 /* Add some content at the bottom of the video/page */
 .content {
-  background-color:rgb(30,30,30);
-  color: white;
-  position: absolute;
+  position: fixed;
+  bottom: 0; 
+  color: rgba(30, 30, 30);
   font-family: neue-haas-grotesk-text, sans-serif;
   font-weight: 500;
-  font-size: 1.9vw;
-  height:100vh;
+  font-size: 1.4vw;
   width: 50%;
   padding: 4.7vh;
 }
 
 .content h1 {
   opacity: 0.7;
-}
-
-
-.content2 {
-  background-color:rgb(30,30,30);
-  position: absolute;
-  font-family: neue-haas-grotesk-text, sans-serif;
-  font-weight: 500;
-  font-size: 1.9vw;
-  height:100vh;
-  width: 50%;
-  padding-top: 4.7vh;
-  margin-top: 110vh;
 }
 
 #misurazione {
@@ -321,15 +321,6 @@ td {
   border-style: none;
   text-align: right;
   padding: 0.5vh;
-}
-
-
-p {
-  color:#D12E27;
-}
-
-p:hover {
-  color:#FF0A00;
 }
 
 

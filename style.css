@@ -2,8 +2,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: white;
-  overflow: hidden;
+  background-color: rgba(30, 30, 30);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: crosshair;
+  /* cursor: url(/assets/favicon.png),auto; */
 }
 
 canvas {
@@ -17,337 +21,310 @@ canvas {
 @font-face {
   font-family: neue-haas-grotesk-text, sans-serif;
   font-style: normal;
-  font-weight: 500;
   src: url("https://use.typekit.net/agg8qim.css") format ("open type");
 }
 
-.neuehaasgroteskdisplaypro-65-medium-24px {
+/******************************** MENÙ ********************************/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0% 2%;
+  align-items: center;
+  text-align: center;
   font-family: neue-haas-grotesk-text, sans-serif;
-  font-size: 24px;
+  font-size: 0.9em;
   font-weight: 500;
-  font-style: normal;
-}
-
-.hidden,
-.hidden * {
-  pointer-events: none;
-  visibility: hidden;
-}
-
-/******************************** HEADER ********************************/
-
-.group-45 {
-  margin-top: 1vh;
-  margin-left: 4.5vh;
-  height: 5.6vh;
-}
-
-.azienda {
-  color: rgba(249, 56, 34);
-  font-weight: 500;
-  width: 293px;
-  height: 24px;
-  left: 86vw;
-  top: 38px;
-  font-size: 20px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-
-.flogisto {
-  color: white;
-  font-size: 20px;
-  line-height: 24px;
-  display: flex;
-  width: 293px;
-  height: 24px;
-  left: 96vw;
-  top: 38px;
-  align-items: center;
-  text-align: center;
-  height: 33px;
-  margin-bottom: 1px;
-  margin-left: 16px;
-  width: 293px;
-}
-
-.altri-servizi {
-  color: white;
-  font-size: 20px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  height: 44px;
-  margin-bottom: 2px;
-  margin-left: 16px;
-  width: 293px;
-}
-
-.header-desktop-w768px {
-  align-items: center;
-  display: flex;
   background-color: rgba(30, 30, 30);
   box-shadow: 1px 1px 30px -5px #000000;
   height: 9vh;
   width: 100%;
   position: fixed;
+  top: 0;
   z-index: 6;
-  top: 0;
 }
 
-.valign-text-middle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.mouse {
+  opacity: 0.75;
 }
 
-.image-129 {
+.mouse:hover {
+  opacity: 1;
+}
+
+#user {
   height: 2.75vh;
-  margin-top: 0.5vh;
-  margin-left: 96%;
-  position: fixed;
 }
 
-
-.darken {
-  background-color: rgba(249, 56, 34);
-  height: 43px;
-  mix-blend-mode: darken;
-  top: 19px;
-  width: 43px;
-  margin-left: 95%;
-  z-index: 7;
+.flog {
+  margin-top: 7%;
+  height: 5.6vh;
 }
 
-/******************************** INIZIO SLIDESHOW ********************************/
-
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-
-/* Dotted Menu */
-
-.barraDots {
-  background-color: white;
-  align-items: center;
-  align-self: center;
-  width: 100%;
-  height: 2vh;
-  margin-top: 20vh;
-  padding: 1vh;
+#menu {
   display: flex;
-  justify-content: center;
-  gap: 4.5vh;
-  z-index: 4;
-}
-
-.ellipse {
-  background-color: rgba(30, 30, 30);
-  opacity: 0.8;
-  border-radius: 10px;
-  height: 1.2vh;
-  width: 1.2vh;
-  transition: width 0.6s ease, height 0.6s ease, border-radius 0.6s ease;
-  z-index: 1;
-}
-
-.active {
-  opacity: 1;
-  border-radius: 26px;
-  height: 23px;
-  width: 23px;
-  z-index: 1;
-}
-
-/******************************** CONTENUTI SLIDESHOW ********************************/
-
-/* Add some content at the bottom of the video/page */
-.content {
-  position: fixed;
-  bottom: 0; 
-  color: rgba(30, 30, 30);
-  font-family: neue-haas-grotesk-text, sans-serif;
-  font-weight: 500;
-  font-size: 1.4vw;
-  width: 50%;
-  padding: 4.7vh;
-}
-
-.content h1 {
-  opacity: 0.7;
-}
-
-#misurazione {
-  padding-left: 0;
-}
-
-#misurazione2 {
-  padding-left: 0;
-}
-
-
-#toppa {
-  margin-top: 24vh;
-}
-
-#toppa2 {
-  margin-top: 24vh;
-}
-
-/* Style the video: 100% width and height to cover the entire window */
-.mySlides video {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-/********************** Slider altezza **********************/
-
-.slidercontainer {
-  position: fixed;
-  margin-top: 30vh;
-  width: 100%; /* Width of the outside container */
-}
-
-#tagSlider {
-  color:rgba(30, 30, 30);
-  font-family: neue-haas-grotesk-text, sans-serif;
-  font-size: 2.3vw;
-  font-weight: 500;
-  position: absolute;
-  margin-left: 77vw;
+  flex-direction: row;
   align-items: center;
-  align-self: center;
-  float: right;
+  padding: 0% 12%;
 }
 
-/* The slider itself */
-.slider {
+#menu a {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0% 22%;
+}
+
+/******************************** HOME ********************************/
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  align-self: center;
-  margin-left: 70vw;
-  margin-bottom: 1.9vh;
-  rotate: -90deg;
-  -webkit-appearance: none; /* Override default CSS styles */
-  appearance: none;
-  width: 73vh; /* Full-width */
-  height: 8px; /* spessore del coso */
-  background: rgba(30, 30, 30); /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
-  transition: opacity 0.2s;
-  z-index: 1;
-}
-
-/* Mouse-over effects */
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  opacity: 1;
-  border-radius: 50%;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: rgba(30, 30, 30); /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-  opacity: 1;
-  border-radius: 50%;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: rgba(30, 30, 30); /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-#tag {
-  color: rgba(30, 30, 30);
-  text-align: center;
-  top: 50%;
-  left: 50%;
-}
-
-
-/* tabella risultati */
-table {
-  font-family: neue-haas-grotesk-text, sans-serif;
+  font-family: "neue-haas-grotesk-display", sans-serif;
+  font-weight: 600;
   font-style: normal;
+  color: white;
+  height: 95vh;
+}
+
+h1 {
+  color: #ff0a00;
+  opacity: 0.75;
+  font-size: 10.5vw;
+  font-weight: 600;
+  line-height: 9.5vh;
+}
+
+h2 {
+  opacity: 0.75;
+  font-size: 3.3vw;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 2.1vw;
+  font-weight: 600;
+  margin: 5% 0%;
+}
+
+h4 {
+  color: white;
+  font-size: 0.9em;
+  font-weight: 600;
+  line-height: 4vh;
+}
+
+.titolo {
+  font-size: 4vw;
+  font-weight: 600;
+}
+
+.sx {
+  margin: 9% 2%;
+  flex: 54%;
+}
+
+.dx {
+  margin-top: 13%;
+  flex: 46%;
+}
+
+.gothic {
+  height: 32vh;
+  margin: 2% 0%;
+}
+
+.pulsante {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #ff0a00;
+  opacity: 0.75;
+  font-size: 2.1vw;
+  font-weight: 600;
+}
+
+.pulsante:hover {
+  opacity: 1;
+}
+
+.pulsante::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.5vh;
+  bottom: 0;
+  left: 0;
+  background-color: #ff0a00;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.pulsante:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+#foto {
+  margin-top: 8%;
+  height: 100vh;
+}
+
+#blanco {
+  margin-bottom: 20%;
+  margin-left: 47%;
+  height: 55vh;
+}
+
+#elenco {
+  padding-right: 20%;
+  line-height: 22vh;
+  flex: 53%;
+}
+
+.center {
+  margin: 9% 2%;
+  flex: 100%;
+}
+
+/******************************** FOOTER ********************************/
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5%;
+  padding: 0% 2%;
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-size: 0.9em;
   font-weight: 500;
-  font-size: 1.5vw;
-  margin-top: 30vh;
-  margin-left: 100vh;
+  height: 25vh;
+  border-bottom: solid rgb(255, 10, 0, 0.75) 1vh;
+}
+.logo {
+  height: 5vh;
+  margin-top: 2vh;
 }
 
-th {
-  border-style: none;
+
+/******************************** AZIENDA ********************************/
+
+.team {
+  font-family: "neue-haas-grotesk-display", sans-serif;
+  color: white;
+  height: 140vh;
+  margin: 9% 2%;
+}
+
+.riquadro {
+  float: left;
+  width: 32%;
+  margin: 2% 0%;
+}
+
+.scheda img {
+  width: 95%;
+  height: auto;
+}
+
+.desc img {
+  height: 6vh;
+  width: auto;
+}
+
+.desc h4 {
+  margin: 1% 0%;
+}
+
+.elenco2 {
+  line-height: 3.1vh;
+  color: #ff0a00;
+  opacity: 0.75;
+  font-size: 4.5vw;
+}
+
+/******************************** AZIENDA ********************************/
+#linea {
+  width: 25%;
+  border-bottom: 1.7vh solid transparent;
+  border-left: 0 solid transparent;
+  border-right: 1.2vh solid transparent;
+  border-top: 1.7vh solid red;
+  transition: width 2s;
+  transition-timing-function: ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+#linea:hover {
+  width: 98%;
+}
+
+.elenco3 {
+  margin-top: 10vh;
+  line-height: 7vh;
+  color: white;
+  opacity: 0.75;
+  font-size: 4.5vw;
+}
+
+.tempo {
+  align-items: left;
+  font-family: "neue-haas-grotesk-display", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: white;
+  height: 85vh;
+  padding: 15% 0%;
   text-align: left;
-  padding: 0.5vh;
+  align-items: center;
 }
 
-td {
-  border-style: none;
-  text-align: right;
-  padding: 0.5vh;
+/******************************** FORM ********************************/
+#form {
+  color:rgba(30, 30, 30);
+  background-color: #ff0a00;
+  border-radius: 5px;
+  opacity: 0.755;
+  padding: 3% 2%;
+  margin-right: 2%;
+  flex: 30%;
+}
+
+input {
+  color:rgba(30, 30, 30);
+  width: 100%;
+  padding: 12px 20px;
+  margin: 2% 0 5% 0;
+  display: inline-block;
+  border: 0.2vw solid #ccc;
+  border-radius: 0.3vw;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=submit] {
+  color: inherit;
+  background-color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: left;
+  padding: 0;
+  margin-top: 5%;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+input[type=submit]:hover {
+  color: white;
 }
 
 
+input:focus {
+  border: 0.2vw solid rgba(30, 30, 30);
+}
