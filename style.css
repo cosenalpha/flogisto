@@ -4,7 +4,6 @@ body {
   padding: 0;
   background-color: rgba(30, 30, 30);
   scroll-behavior: smooth;
-  overflow-x: hidden;
   overflow-y: auto;
   cursor: crosshair;
   /* cursor: url(/assets/favicon.png),auto; */
@@ -219,8 +218,10 @@ footer {
 .team {
   font-family: "neue-haas-grotesk-display", sans-serif;
   color: white;
-  height: 140vh;
-  margin: 9% 2%;
+  width: 100%;
+  height: 150vh;
+  margin: 9% 0%;
+  padding: 0 2%;
 }
 
 .riquadro {
@@ -230,7 +231,7 @@ footer {
 }
 
 .scheda img {
-  width: 95%;
+  width: 100%;
   height: auto;
 }
 
