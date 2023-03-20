@@ -40,7 +40,7 @@ header {
 header a {
   float: left;
   font-family: neue-haas-grotesk-text, sans-serif;
-  font-size: 0.9em;
+  font-size: 0.9vw;
   font-weight: 500;
   text-decoration: none;
   color: white;
@@ -202,7 +202,7 @@ footer {
   margin-top: 5%;
   padding: 0% 2%;
   font-family: neue-haas-grotesk-text, sans-serif;
-  font-size: 0.9em;
+  font-size: 0.9vw;
   font-weight: 500;
   height: 25vh;
   border-bottom: solid rgb(255, 10, 0, 0.75) 1vh;

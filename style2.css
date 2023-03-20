@@ -51,7 +51,7 @@ header {
 header a {
   float: left;
   font-family: neue-haas-grotesk-text, sans-serif;
-  font-size: 0.9em;
+  font-size: 0.9vw;
   font-weight: 500;
   text-decoration: none;
   color: white;
