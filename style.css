@@ -293,7 +293,7 @@ footer {
   font-size: 1.1vw;
   color:rgba(30, 30, 30);
   background-color: #ff0a00;
-  opacity: 0.755;
+  opacity: 0.75;
   border-radius: 5px;
   padding: 3% 2%;
   margin-right: 2%;
@@ -334,4 +334,54 @@ input[type=submit]:hover {
 input:focus {
   border: 0.2vw solid rgba(30, 30, 30);
 }
+
+/***************************** ANIMATION *****************************/
+.gothic, h2 {
+  opacity: 0;
+  animation: drop 0.5s linear forwards;
+  animation-delay: 0.1s;
+}
+
+h3 {
+  opacity: 0;
+  animation: drop 0.5s linear forwards;
+  animation-delay: 0.8s;
+}
+
+.riquadro {
+  opacity: 0;
+  animation: fadeIn 0.5s linear forwards;
+  animation-delay: 0.8s;
+}
+
+.pulsante, .fadeIn, #form, #foto {
+  opacity: 0;
+  animation: fadeIn 0.6s linear forwards;
+  animation-delay: 1.7s;
+}
+
+@keyframes drop {
+  0% {
+      transform: translateY(2vh);
+      opacity: 0;
+  }
+
+  100% {
+      transform: translateY(0vh);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
+
+
 
