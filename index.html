@@ -59,7 +59,7 @@
 
     <!--------- pag. 2 ----------->
     <section id="pag2">
-      <div class="sx">
+      <div class="sx scorri">
         <!-- titolo -->
         <img class="gothic" id="chiedi" style="height: 48vh" src="./assets/chiedi.png" alt="chiedi e ti sarà dato fuoco" />
       </div>
@@ -80,7 +80,8 @@
 
     <!--------- pag. 4 ----------->
     <section>
-      <h3 style="margin: 9% 2%">
+      <div class="scorri2" style="margin: 9% 2%">
+      <h3>
         Il mondo di oggi ha sempre più bisogno di soluzioni energetiche alternative.
         <br />Tramite tecnologie rivoluzionarie siamo in grado di sfruttare l’energia
         <br />contenuta nei corpi umani per generare elettricità a prezzi competitivi.
@@ -91,11 +92,12 @@
         <br />Scegli quando consegnare il tuo corpo e come usare i soldi che riceverai,
         <br />noi ci occupiamo del resto.
       </h3>
+      </div>
     </section>
  
 
     <!--------- pag. 5 ----------->
-    <section>
+    <section class="scorri3">
 
       <div class="sx">
         <h2>i nostri numeri</h2>
@@ -115,7 +117,7 @@
   <!--------- pag. 6 ----------->
   <section style="margin: 7% 0%;">
 
-    <div class="center">
+    <div class="center scorri4">
       <h2>guarda il video promozionale</h2>
 
       <!-- video -->
@@ -132,7 +134,7 @@
 
 
   <!--------- pag. 7 ----------->
-  <section>
+  <section class="scorri5">
     <div class="sx">
 
       <!-- sottotitolo -->
@@ -176,5 +178,67 @@
       <a href="./azienda.html" target="_self"><img src="./assets/ash.png" alt="azienda.html" class="mouse logo"></a>
     </div>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+      // If the element is visible
+      if (entry.isIntersecting) {
+        // Add the animation class
+        entry.target.classList.add('scroll');
+      }
+      });
+    });
+    observer.observe(document.querySelector('.scorri'));
+
+
+    const observer2 = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+      // If the element is visible
+      if (entry.isIntersecting) {
+        // Add the animation class
+        entry.target.classList.add('scroll');
+      }
+      });
+    });
+    observer2.observe(document.querySelector('.scorri2'));
+
+
+    const observer3 = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+      // If the element is visible
+      if (entry.isIntersecting) {
+        // Add the animation class
+        entry.target.classList.add('scroll');
+      }
+      });
+    });
+    observer3.observe(document.querySelector('.scorri3'));
+
+    const observer4 = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+      // If the element is visible
+      if (entry.isIntersecting) {
+        // Add the animation class
+        entry.target.classList.add('scroll');
+      }
+      });
+    });
+    observer4.observe(document.querySelector('.scorri4'));
+
+
+    const observer5 = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+      // If the element is visible
+      if (entry.isIntersecting) {
+        // Add the animation class
+        entry.target.classList.add('scroll');
+      }
+      });
+    });
+    observer5.observe(document.querySelector('.scorri5'));
+
+  </script>
+
   </body>
 </html>

@@ -342,7 +342,7 @@ input:focus {
   animation-delay: 0.1s;
 }
 
-h3 {
+h3, .scroll {
   opacity: 0;
   animation: drop 0.5s linear forwards;
   animation-delay: 0.8s;
