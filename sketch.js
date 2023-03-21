@@ -216,12 +216,6 @@ function invioDati() {
     etaAvg = random(20, 50);
   }
 
-  massaG = round(
-    (1.61 * massa) / (altezza * altezza) + 0.13 * etaAvg - varGen - 13.9
-  );
-  if (!massaG) {
-    massaG = random(19, 28);
-  }
 
   let avrWm = 48 + (1.1 * ( altezza * 100 - 152));
   let avrWw = 45.4 + (0.9 * ( altezza * 100 - 152));
@@ -230,14 +224,21 @@ function invioDati() {
   // Female ideal body weight = 45.4 kilograms (100 lb) + 0.9 kilograms (2.0 lb) × (height (cm) − 152)
 
   if (genere == "male") {
-    idratazione = round(((2.447 - 0.09156 * etaAvg + 0.1074 * expAlt + 0.3362 * massa) / massa) * 100);
     massa = round(random(avrWm - 7, avrWm + 7));
+    idratazione = round(((2.447 - 0.09156 * etaAvg + 0.1074 * expAlt + 0.3362 * massa) / massa) * 100);
   } else if (genere == "female") {
-    idratazione = round(((-2.097 + 0.1069 * expAlt + 0.2466 * massa) / massa) * 100);
     massa = round(random(avrWw - 7, avrWw + 7));
+    idratazione = round(((-2.097 + 0.1069 * expAlt + 0.2466 * massa) / massa) * 100);
   } else if (!genere) {
-    idratazione = round(((-2.097 + 0.1069 * expAlt + 0.2466 * massa) / massa) * 100);
     massa = round(random(avrWw - 7, avrWw + 7));
+    idratazione = round(((-2.097 + 0.1069 * expAlt + 0.2466 * massa) / massa) * 100);
+  }
+
+  massaG = round(
+    (1.61 * massa) / (altezza * altezza) + 0.13 * etaAvg - varGen - 13.9
+  );
+  if (!massaG) {
+    massaG = random(19, 28);
   }
 
   if (!idratazione) {
