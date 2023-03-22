@@ -71,7 +71,7 @@
 
 
     <!--------- pag. 3 ----------->
-    <section>
+    <section class="scorri">
       <div class="sx">
         <!-- sottotitolo -->
         <p class="titolo">tieni traccia
@@ -96,7 +96,7 @@
 
 
     <!--------- pag. 4 ----------->
-    <section>
+    <section class="scorri2">
       <div class="sx">
         <!-- foto -->
         <img src="./assets/folder.png"  style="margin-left: 2%; width: 40vw; height: auto;"/>
@@ -122,7 +122,7 @@
 
 
     <!--------- pag. 5 ----------->
-    <section style="margin: 7% 0%;">
+    <section style="margin: 7% 0%;" class="scorri3">
 
       <div class="center">
         <h2>guarda il video per maggiori chiarimenti</h2>
@@ -158,6 +158,45 @@
         <a href="./azienda.html" target="_self"><img src="./assets/ash.png" alt="azienda.html" class="mouse logo"></a>
       </div>
     </footer>
+
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+        // If the element is visible
+        if (entry.isIntersecting) {
+          // Add the animation class
+          entry.target.classList.add('scroll');
+        }
+          });
+        });
+        observer.observe(document.querySelector('.scorri'));
+
+
+        const observer2 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+        // If the element is visible
+        if (entry.isIntersecting) {
+          // Add the animation class
+          entry.target.classList.add('scroll');
+        }
+          });
+        });
+        observer2.observe(document.querySelector('.scorri2'));
+
+
+
+        const observer3 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+        // If the element is visible
+        if (entry.isIntersecting) {
+          // Add the animation class
+          entry.target.classList.add('scroll');
+        }
+          });
+        });
+        observer3.observe(document.querySelector('.scorri3'));
+    </script>
 
   </body>
 </html>
