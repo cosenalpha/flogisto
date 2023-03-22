@@ -23,6 +23,31 @@ canvas {
   src: url("https://use.typekit.net/agg8qim.css") format ("open type");
 }
 
+/* scroll bar */
+/* larghezza */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* traccia di scorrimento: sorta di binario su cui si muove la barra di scorrimento */
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 30);
+}
+
+/* barra di scorrimento: elemento che viene trascinato per scorrere nella pagina */
+::-webkit-scrollbar-thumb {
+  background: rgb(50,50,50);
+  border-radius: 50px;
+}
+
+/* barra di scorrimento al passaggio del mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+
+
+
 /******************************** MENÙ ********************************/
 header {
   display: flex;
